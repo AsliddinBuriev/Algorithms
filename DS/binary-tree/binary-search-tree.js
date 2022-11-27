@@ -89,5 +89,5 @@ for (const el of list) {
 	// tree.insertIteratively(el);
 	tree.root = tree.insertRecursively(tree.root, el);
 }
-// console.log(tree.findIteratively(11));
+console.log(tree.findIteratively(11));
 console.log(tree.findRecursively(tree.root, 29));
