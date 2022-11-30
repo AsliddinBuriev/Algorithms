@@ -1,16 +1,7 @@
-class Node {
-	constructor(value) {
-		this.value = value;
-		this.left = null;
-		this.right = null;
-	}
-}
+import { Node, BinaryTree, Child } from './binary-tree';
 
-class BinarySearchTree {
-	constructor() {
-		this.root = null;
-	}
-	insertIteratively(value) {
+class BinarySearchTree extends BinaryTree {
+	insertIteratively(value: any) {
 		const newNode = new Node(value);
 		if (this.root === null) {
 			this.root = newNode;
@@ -39,7 +30,8 @@ class BinarySearchTree {
 			}
 		}
 	}
-	insertRecursively(root, value) {
+
+	insertRecursively(root: Child, value: any): Node {
 		if (root === null) {
 			return new Node(value);
 		}
@@ -52,9 +44,10 @@ class BinarySearchTree {
 		}
 		return root;
 	}
-	findIteratively(value) {
+
+	findIteratively(value: any) {
 		if (this.root === null) return undefined;
-		let currentNode = this.root;
+		let currentNode: Child = this.root;
 		while (currentNode) {
 			if (currentNode.value > value) {
 				currentNode = currentNode.left;
@@ -66,7 +59,7 @@ class BinarySearchTree {
 		}
 		return undefined;
 	}
-	findRecursively(root, value) {
+	findRecursively(root: Child, value: any) {
 		if (root === null) return undefined;
 		if (root.value > value) {
 			return this.findRecursively(root.left, value);
