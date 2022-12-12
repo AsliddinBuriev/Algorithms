@@ -1,4 +1,4 @@
-import { Node, BinaryTree, Child } from './binary-tree';
+import { Node, BinaryTree, Child } from './BinaryTree';
 
 class BinarySearchTree extends BinaryTree {
 	insertIteratively(value: any) {

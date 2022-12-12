@@ -1,4 +1,4 @@
-import { BinaryTree, Node, Child } from './binary-tree';
+import { BinaryTree, Node, Child } from './BinaryTree';
 
 class BinaryTreeTraversial extends BinaryTree {
 	public breadthFirstSearch(): any[] {
@@ -37,6 +37,7 @@ class BinaryTreeTraversial extends BinaryTree {
 				break;
 			}
 		}
+		console.log(this.root);
 	}
 
 	private inOrderSearch(root: Child, storage: any[] = []) {
