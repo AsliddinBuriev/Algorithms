@@ -1,6 +1,6 @@
 import { Node, BinaryTree, Child } from './BinaryTree';
 
-class BinarySearchTree extends BinaryTree {
+export class BinarySearchTree extends BinaryTree {
 	insertIteratively(value: any) {
 		const newNode = new Node(value);
 		if (this.root === null) {
@@ -32,7 +32,7 @@ class BinarySearchTree extends BinaryTree {
 	}
 
 	insertRecursively(root: Child, value: any): Node {
-		if (root === null) {
+		if (!root) {
 			return new Node(value);
 		}
 		if (root.value > value) {
@@ -71,16 +71,5 @@ class BinarySearchTree extends BinaryTree {
 	}
 }
 
-const tree = new BinarySearchTree();
-const list = [20, 10, 40, 30, 5, 11, 50];
-//                  20
-//                /    \
-//              10      40
-//             /  \    /   \
-//            5   11  30    50
-for (const el of list) {
-	// tree.insertIteratively(el);
-	tree.root = tree.insertRecursively(tree.root, el);
-}
-console.log(tree.findIteratively(11));
-console.log(tree.findRecursively(tree.root, 29));
+
+

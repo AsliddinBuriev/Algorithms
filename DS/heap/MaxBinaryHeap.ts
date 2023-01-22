@@ -31,7 +31,6 @@ export class MaxBinaryHeap extends BinaryHeap {
 	}
 
 	private bubbleDown(index: number) {
-		console.log(this.values);
 		const leftChildIndex = index * 2 + 1;
 		const rightChildIndex = index * 2 + 2;
 		let leftChild: number | null = null;
