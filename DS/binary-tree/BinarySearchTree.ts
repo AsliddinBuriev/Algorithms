@@ -32,7 +32,7 @@ export class BinarySearchTree extends BinaryTree {
 	}
 
 	insertRecursively(root: Child, value: any): Node {
-		if (!root) {
+		if (root === null) {
 			return new Node(value);
 		}
 		if (root.value > value) {
@@ -71,5 +71,16 @@ export class BinarySearchTree extends BinaryTree {
 	}
 }
 
-
-
+const tree = new BinarySearchTree();
+const list = [20, 10, 40, 30, 5, 11, 50];
+//                  20
+//                /    \
+//              10      40
+//             /  \    /   \
+//            5   11  30    50
+for (const el of list) {
+	// tree.insertIteratively(el);
+	tree.root = tree.insertRecursively(tree.root, el);
+}
+console.log(tree.findIteratively(11));
+console.log(tree.findRecursively(tree.root, 29));
