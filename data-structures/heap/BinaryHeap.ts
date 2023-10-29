@@ -1,6 +1,6 @@
 export class BinaryHeap {
-	values: number[];
+	list: number[];
 	constructor() {
-		this.values = [];
+		this.list = [];
 	}
 }

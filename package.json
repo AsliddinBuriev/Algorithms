@@ -1,0 +1,29 @@
+{
+	"name": "y",
+	"version": "1.0.0",
+	"description": "",
+	"main": "bin/index.js",
+	"bin": {
+		"mycli": "./bin/index.js"
+	},
+	"scripts": {
+		"build": "tsc",
+		"start": "tsc & node dist/main.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/AsliddinBuriev/Algorithms.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/AsliddinBuriev/Algorithms/issues"
+	},
+	"homepage": "https://github.com/AsliddinBuriev/Algorithms#readme",
+	"dependencies": {
+		"yargs": "^17.7.2"
+	},
+	"devDependencies": {
+		"@types/yargs": "^17.0.29"
+	}
+}

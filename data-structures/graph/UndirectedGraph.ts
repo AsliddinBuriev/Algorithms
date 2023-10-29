@@ -12,6 +12,11 @@ export class UndirectedGraph implements IGraph {
 	}
 	removeVertex(vertexId: string | number) {
 		delete this.vertices[vertexId];
+		for (let vertex in this.vertices) {
+			this.vertices[vertex].edges = this.vertices[vertex].edges.filter(
+				(edge: string | number) => edge !== vertexId
+			);
+		}
 	}
 	addEdge(vertexId1: string | number, vertexId2: string | number) {
 		this.vertices[vertexId1].edges.push(vertexId2);

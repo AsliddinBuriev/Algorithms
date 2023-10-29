@@ -59,7 +59,7 @@ export class BinarySearchTree extends BinaryTree {
 		}
 		return undefined;
 	}
-	findRecursively(root: Child, value: any) {
+	findRecursively(root: Child, value: any): Node | undefined {
 		if (root === null) return undefined;
 		if (root.value > value) {
 			return this.findRecursively(root.left, value);

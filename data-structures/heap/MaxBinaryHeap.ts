@@ -5,28 +5,25 @@ export class MaxBinaryHeap extends BinaryHeap {
 		super();
 	}
 	public insert(value: number) {
-		this.values.push(value);
-		this.bubbleUp(this.values.length - 1);
+		this.list.push(value);
+		this.bubbleUp(this.list.length - 1);
 	}
 
 	private bubbleUp(childIndex: number): void {
 		const parentIndex = Math.floor((childIndex - 1) / 2);
-		if (
-			childIndex === 0 ||
-			this.values[childIndex] <= this.values[parentIndex]
-		)
+		if (childIndex === 0 || this.list[childIndex] <= this.list[parentIndex])
 			return;
-		const temp = this.values[childIndex];
-		this.values[childIndex] = this.values[parentIndex];
-		this.values[parentIndex] = temp;
+		const temp = this.list[childIndex];
+		this.list[childIndex] = this.list[parentIndex];
+		this.list[parentIndex] = temp;
 		this.bubbleUp(parentIndex);
 	}
 
 	public extract(value: number) {
-		const index = this.values.indexOf(value);
-		const lastElement = this.values.pop()!;
-		if (index >= this.values.length || this.values.length === 0) return;
-		this.values[index] = lastElement;
+		const index = this.list.indexOf(value);
+		const lastElement = this.list.pop()!;
+		if (index >= this.list.length || this.list.length === 0) return;
+		this.list[index] = lastElement;
 		this.bubbleDown(index);
 	}
 
@@ -35,20 +32,19 @@ export class MaxBinaryHeap extends BinaryHeap {
 		const rightChildIndex = index * 2 + 2;
 		let leftChild: number | null = null;
 		let rightChild: number | null = null;
-		const length = this.values.length;
+		const length = this.list.length;
 		let nextIndex: number;
-		if (leftChildIndex < length) leftChild = this.values[leftChildIndex];
-		if (rightChildIndex < length) rightChild = this.values[rightChildIndex];
+		if (leftChildIndex < length) leftChild = this.list[leftChildIndex];
+		if (rightChildIndex < length) rightChild = this.list[rightChildIndex];
 		if (leftChild !== null && rightChild !== null)
-			nextIndex =
-				leftChild > rightChild ? leftChildIndex : rightChildIndex;
+			nextIndex = leftChild > rightChild ? leftChildIndex : rightChildIndex;
 		else if (leftChild === null && rightChild) nextIndex = rightChildIndex;
 		else if (leftChild && rightChild === null) nextIndex = leftChildIndex;
 		else return;
-		if (this.values[nextIndex] <= this.values[index]) return;
-		const temp = this.values[index];
-		this.values[index] = this.values[nextIndex];
-		this.values[nextIndex] = temp;
+		if (this.list[nextIndex] <= this.list[index]) return;
+		const temp = this.list[index];
+		this.list[index] = this.list[nextIndex];
+		this.list[nextIndex] = temp;
 		this.bubbleDown(nextIndex);
 	}
 }
@@ -59,6 +55,3 @@ const maxBinaryHeap = new MaxBinaryHeap();
 	maxBinaryHeap.insert(val);
 });
 
-maxBinaryHeap.extract(33);
-maxBinaryHeap.extract(39);
-console.log(maxBinaryHeap.values);

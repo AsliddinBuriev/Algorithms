@@ -6,44 +6,39 @@ export class Node {
 }
 
 export class PriorityQueue {
-	public nodes: Node[] = [];
+	public list: number[];
 	constructor() {
-		this.nodes = [];
+		this.list = [];
 	}
-	enqueue(value: number, priority: number): void {
-		let newNode = new Node(value, priority);
-		this.nodes.push(newNode);
-		this.bubbleUp(this.nodes.length - 1);
+	enqueue(value: number): void {
+		this.list.push(value);
+		this.bubbleUp(this.list.length - 1);
 	}
-	dequeue(): Node {
-		const root = this.nodes[0];
-		const lastChild = this.nodes.pop()!;
-		this.nodes[0] = lastChild;
+	dequeue(): number {
+		const root = this.list[0];
+		const lastChild = this.list.pop()!;
+		this.list[0] = lastChild;
 		this.bubbleDown(0);
 		return root;
 	}
 	private bubbleUp(childIndex: number): void {
 		const parentIndex = Math.floor((childIndex - 1) / 2);
-		if (
-			childIndex === 0 ||
-			this.nodes[parentIndex].priority < this.nodes[childIndex].priority
-		)
+		if (childIndex === 0 || this.list[parentIndex] < this.list[childIndex])
 			return;
-		const tempNode = this.nodes[parentIndex];
-		this.nodes[parentIndex] = this.nodes[childIndex];
-		this.nodes[childIndex] = tempNode;
+		const el = this.list[parentIndex];
+		this.list[parentIndex] = this.list[childIndex];
+		this.list[childIndex] = el;
 		this.bubbleUp(parentIndex);
 	}
 	private bubbleDown(index: number): void {
-		console.log(this.nodes);
+		console.log(this.list);
 		let leftChildIndex = index * 2 + 1;
 		let rightChildIndex = index * 2 + 2;
-		let leftChild = this.nodes[leftChildIndex];
-		let rightChild = this.nodes[rightChildIndex];
+		let leftChild = this.list[leftChildIndex];
+		let rightChild = this.list[rightChildIndex];
 		let nextParentIndex: number;
 		if (leftChild && rightChild) {
-			if (leftChild.priority <= rightChild.priority)
-				nextParentIndex = leftChildIndex;
+			if (leftChild <= rightChild) nextParentIndex = leftChildIndex;
 			else nextParentIndex = rightChildIndex;
 		} else if (leftChild && !rightChild) {
 			nextParentIndex = leftChildIndex;
@@ -52,12 +47,11 @@ export class PriorityQueue {
 		} else {
 			return;
 		}
-		if (this.nodes[index].priority < this.nodes[nextParentIndex].priority)
-			return;
+		if (this.list[index] < this.list[nextParentIndex]) return;
 
-		const temp = this.nodes[nextParentIndex];
-		this.nodes[nextParentIndex] = this.nodes[index];
-		this.nodes[index] = temp;
+		const temp = this.list[nextParentIndex];
+		this.list[nextParentIndex] = this.list[index];
+		this.list[index] = temp;
 		this.bubbleDown(nextParentIndex);
 	}
 }
