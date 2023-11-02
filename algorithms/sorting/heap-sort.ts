@@ -8,6 +8,6 @@ export function heapSort(arr: number[]): number[] {
 		if (min) sortedArray.push(min);
 	}
 	console.log('**** SORTING IS COMPLETED! ****');
-	console.log('Sorted Array:', sortedArray);
+	console.log('Sorted Array:', JSON.stringify(sortedArray));
 	return sortedArray;
 }

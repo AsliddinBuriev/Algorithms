@@ -1,2 +1,5 @@
-import { heapSort } from './algorithms/sorting/heap-sort';
-heapSort([12, 3, 5, 6, 7, 8, 1, 2, 9, 0, -1, 11]);
+import { heapSort, mergeSort } from './algorithms/sorting';
+
+const sorted = mergeSort(
+	Array.from({ length: 100 }, () => Math.floor(Math.random() * 100000))
+);
